@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,6 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registration from</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body class="bg-light d-flex">
@@ -19,9 +23,9 @@
                         <div class="mb-3 mt-md-4 px-md-3 px-xs-1">
                             <h2 class="fw-bold mb-2 mt-5 text-center">REGISTER</h2>
                             <p class="mb-2 text-center" style="font-weight: 500;">Please enter you information.</p>
-                            <p class="mb-3 text-center" style="font-weight: 600;>&emsp;{Message}&emsp;</p>
+                            <p class="mb-3 text-center" style="font-weight: 600;<?php echo $_SESSION["msgType"] == 'Error' ? 'color: red;' : 'color:green;'?>">&emsp;<?php echo $_SESSION["message"] ?>&emsp;</p>
                             <div class="mb-3">
-                                <form action="" method="POST">
+                                <form action="model.php" method="POST">
                                     <div class="mb-3 row">
                                         <label for="fname" class="col-sm-4 col-form-label">First name:</label>
                                         <div class="col-sm-8">
@@ -72,7 +76,7 @@
                                 <div class="mt-3">
                                     <p class="mb-0  text-center">
                                         Already have an account?&nbsp;
-                                        <a href="#" class="nav-link d-inline text-primary fw-bold"> Log-in </a>
+                                        <a href="index.php?page=login" class="nav-link d-inline text-primary fw-bold"> Log-in </a>
                                     </p>
                                 </div>
                             </div>
