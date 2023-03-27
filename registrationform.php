@@ -1,6 +1,5 @@
-<?php
-session_start();
-?>
+<?php session_start(); ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,7 +9,6 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registration from</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="style.css">
 </head>
 
 <body class="bg-light d-flex">
@@ -29,14 +27,14 @@ session_start();
                                     <div class="mb-3 row">
                                         <label for="fname" class="col-sm-4 col-form-label">First name:</label>
                                         <div class="col-sm-8">
-                                            <input type="text" id="fname" class="form-control" placeholder="First name" name="fname">
+                                            <input type="text" id="fname" class="form-control" required placeholder="First name" name="fname">
                                         </div>
                                     </div>
 
                                     <div class="mb-3 row">
                                         <label for="lname" class="col-sm-4 col-form-label">Last name:</label>
                                         <div class="col-sm-8">
-                                            <input type="text" id="lname" class="form-control" placeholder="Last name" name="lname">
+                                            <input type="text" id="lname" class="form-control" required placeholder="Last name" name="lname">
                                         </div>
                                     </div>
 

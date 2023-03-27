@@ -1,6 +1,4 @@
-<?php
-session_start();
-?>
+<?php session_start(); ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -11,7 +9,6 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login from</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="style.css">
 </head>
 
 <body class="bg-light d-flex">
@@ -23,8 +20,8 @@ session_start();
                     <div class="card-body">
                         <div class="mb-3 mt-md-4 px-md-3 px-xs-1">
                             <h2 class="fw-bold mb-2 text-center">LOG IN</h2>
-                            <p class="mb-2 text-center" style="font-weight: 500;">&bull;</p>
-                            <p class="mb-3 text-center" style="font-weight: 600;<?php echo $_SESSION["msgType"] == 'Error' ? 'color: red;' : 'color:green;'?>">&emsp;<?php echo $_SESSION["message"] ?>&emsp;</p>
+                            <p class="mb-2 text-center" style="font-weight: 500;">&nbsp;</p>
+                            <p class="mb-3 text-center" style="font-weight: 600;<?php echo ($_SESSION["msgType"] == 'Error' ? 'color: red;' : ($_SESSION["msgType"] == 'Success' ? 'color:green;' : 'color:black;')); ?>">&emsp;<?php echo $_SESSION["message"] ?>&emsp;</p>
                             <div class="mb-3">
                                 <form action="model.php" method="POST">
                                     <div class="form-group mb-3" controlId="formBasicEmail">

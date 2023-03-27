@@ -1,9 +1,15 @@
 <?php
 session_start();
-echo '<pre>';
+
+/*echo '<pre>';
 print_r($_POST);
-//print_r($_FILES);
-echo '</pre>';
+echo '</pre>';*/
+
+function setMessage($type, $text)
+{
+    $_SESSION["msgType"] = $type;
+    $_SESSION["message"] = $text;
+}
 
 if (isset($_POST['register']))
 {
@@ -26,6 +32,7 @@ if (isset($_POST['register']))
 
         $csvFile = 'users.csv';
 
+
         if (file_exists($csvFile))
         {
             $users = array_map('str_getcsv', file($csvFile));
@@ -39,32 +46,23 @@ if (isset($_POST['register']))
         {
             if ($user[2] === $email)
             {
-                $_SESSION["msgType"] = 'Error';
-                $_SESSION["message"] = 'Email exists!! please try again with another email.';
+                setMessage("Error", "Email exists!! please try again with another email.");
                 header("Location: registrationform.php");
                 die();
             }
         }
-
         $userData = array($firstName, $lastName, $email, $password_hash);
         $userDataFile = fopen($csvFile, 'a+');
         fputcsv($userDataFile, $userData);
         fclose($userDataFile);
 
-        $_SESSION["msgType"] = 'Success';
-        $_SESSION["message"] = 'Registration Successful! please login.';
+        setMessage("Success", "Registration Successful! please login." );
         header("Location: loginform.php");
-        die();
-
-
-//        header("Location: loginform.php");
     }
     else
     {
-        $_SESSION["msgType"] = 'Error';
-        $_SESSION["message"] = 'Wrong email address!! please try again with a valid email.';
+        setMessage("Error", "Wrong email address!! please try again with a valid email.");
         header("Location: registrationform.php");
-        die();
     }
 }
 
@@ -88,18 +86,23 @@ if (isset($_POST['login']))
         {
             if (password_verify($_POST['password'], $user[3]))
             {
-//                login_success();
+//                login_success;
                 $_SESSION["userFirstName"] = $user[0];
                 $_SESSION["userLastName"] = $user[1];
                 header("Location: page.php");
             }
             else
             {
-                $_SESSION["msgType"] = 'Error';
-                $_SESSION["message"] = 'Wrong email or password! Please enter valid credentials';
+                setMessage("Error", "Wrong password! Please enter valid credentials.");
                 header("Location: loginform.php");
             }
+        }
+        else
+        {
+            setMessage("Error", "User does not exist! Please enter valid credentials.");
+            header("Location: loginform.php");
         }
     }
 
 }
+

@@ -1,8 +1,7 @@
 <?php
 
 session_start();
-//$_SESSION['msgType'] = '';
-//$_SESSION['message'] = '';
+
 session_unset();
 
 if (isset($_GET['page']))
